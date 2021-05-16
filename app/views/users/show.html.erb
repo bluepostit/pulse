@@ -1,2 +1,36 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="header text-center">
+    <h1 class="mb-0 pb-0"><%= @user.name %></h1>
+    <% if user_signed_in? && @user == current_user %>
+      <p>
+        <span class="text-muted">This is your page</span>.
+        Share it.
+
+    <% end %>
+  </div>
+
+  <h3>Latest Checkins</h3>
+  <% if @user.latest_checkins.empty? %>
+    <p class="text-center">No checkins yet.</p>
+  <% else %>
+    <ul class="list-group rounded-lg">
+      <% @user.latest_checkins.each do |checkin| %>
+        <li class="list-group-item list-group-item-<%= checkin_bs_context_name(checkin) %>">
+          <div class="d-flex w-100 justify-content-between align-items-center">
+            <span class="h4"><%= checkin.pulse_status.display_name %></span>
+            <span class="badge badge-primary badge-pill pill-time-ago">
+              <%= time_ago_in_words(checkin.created_at) %>
+            </span>
+          </div>
+          <% if checkin.message.length.positive? %>
+            <blockquote class="blockquote">
+              <p class="mb-0"><%= checkin.message %></p>
+              <footer class="blockquote-footer"><%= @user.name %></footer>
+            </blockquote>
+          <% end %>
+          <small class="text-muted"><%= local_time(checkin.created_at) %></small>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -1,14 +1,19 @@
 <div class="container">
   <h1 class="text-center">Check In</h1>
+  <p class="text-center">Let people know how you are right now.</p>
 
-  <%= simple_form_for(@checkin) do |f| %>
+  <%= simple_form_for(@checkin, html: { autocomplete: :off }) do |f| %>
     <%= f.association :pulse_status,
                       label: 'Status',
                       include_blank: false,
                       label_method: :display_name,
-                      placeholder: 'Please select a status' %>
-    <%= f.input :location, label: 'Location (optional)' %>
-    <%= f.input :message, label: 'Message (optional)' %>
+                      class: "status-name" %>
+    <%= f.input :location,
+                label: 'Location (optional)',
+                placeholder: 'Where are you?' %>
+    <%= f.input :message,
+                label: 'Message (optional)',
+                placeholder: 'Share a little more info' %>
 
     <%= f.button :submit, 'Check In', class: 'btn btn-dark w-100' %>
   <% end %>
