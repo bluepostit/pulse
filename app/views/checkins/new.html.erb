@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center">Check In</h1>
+
+  <%= simple_form_for(@checkin) do |f| %>
+    <%= f.association :pulse_status,
+                      label: 'Status',
+                      include_blank: false,
+                      label_method: :display_name,
+                      placeholder: 'Please select a status' %>
+    <%= f.input :location, label: 'Location (optional)' %>
+    <%= f.input :message, label: 'Message (optional)' %>
+
+    <%= f.button :submit, 'Check In', class: 'btn btn-dark w-100' %>
+  <% end %>
+</div>
