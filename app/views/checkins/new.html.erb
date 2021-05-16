@@ -1,6 +1,7 @@
 <div class="container">
   <h1 class="text-center">Check In</h1>
-  <p class="text-center">Let people know how you are right now.</p>
+  <p class="text-center mb-0">How are you doing right now?</p>
+  <p class="text-center">After you check in, people who visit your profile page will see your update there.</p>
 
   <%= simple_form_for(@checkin, html: { autocomplete: :off }) do |f| %>
     <%= f.association :pulse_status,
