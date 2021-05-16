@@ -23,10 +23,17 @@
             </span>
           </div>
           <% if checkin.message.length.positive? %>
-            <blockquote class="blockquote">
-              <p class="mb-0"><%= checkin.message %></p>
-              <footer class="blockquote-footer"><%= @user.name %></footer>
-            </blockquote>
+              <p class="mb-0">
+                <sup><i class="fas fa-quote-left"></i></sup>
+                <%= checkin.message %>
+                <sup><i class="fas fa-quote-right"></i></sup>
+              </p>
+          <% end %>
+          <% unless checkin.location.empty? %>
+            <div>
+              <i class="fas fa-map-marker-alt"></i>
+              <%= checkin.location %>
+            </div>
           <% end %>
           <small class="text-muted"><%= local_time(checkin.created_at) %></small>
         </li>
