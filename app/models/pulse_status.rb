@@ -1,0 +1,2 @@
+class PulseStatus < ApplicationRecord
+end
