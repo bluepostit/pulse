@@ -14,7 +14,9 @@
 <div class="page-content text-center flex-grow-1 d-flex flex-column justify-content-center">
   <div class="mb-2">
     <% if user_signed_in? %>
-      <%= link_to 'Check In', new_checkin_path, class: 'btn btn-primary w-100' %>
+      <%= link_to new_checkin_path, class: 'btn btn-primary w-100' do %>
+        <i class="fas fa-heartbeat small"></i> Check in
+      <% end %>
     <% else %>
       <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary w-100' %>
     <% end %>

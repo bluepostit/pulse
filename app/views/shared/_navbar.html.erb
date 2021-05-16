@@ -1,6 +1,6 @@
-<div class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+<div class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
   <%= link_to root_path, class: "navbar-brand" do %>
-    Pulse
+    <%= image_tag 'logo.png', alt: 'Pulse', height: 30 %>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,24 +10,28 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Check In", new_checkin_path, class: "nav-link btn btn-primary" %>
+        <li class="nav-item active my-2 my-md-0 mr-md-2">
+          <%= link_to new_checkin_path, class: "nav-link btn btn-primary" do %>
+            <i class="fas fa-heartbeat small"></i> Check in
+          <% end %>
         </li>
       <% end %>
 
-      <li class="nav-item dropdown">
-        <%= link_to 'Menu', '#', class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <% if user_signed_in? %>
-            <%= link_to 'My page', user_path(current_user), class: 'dropdown-item' %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          <% else %>
-            <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
-          <% end %>
-        </div>
-      </li>
       <li class="nav-item">
         <%= render 'shared/find_user_form' %>
+      </li>
+
+      <li class="nav-item mx-sm-2">
+        <div class="form-inline">
+          <% if user_signed_in? %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
+            <%= link_to user_path(current_user), class: 'btn btn-secondary ml-2 flex-grow-1' do %>
+              <i class="small fas fa-user-circle text-white"></i> Profile
+            <% end %>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </li>
     </ul>
   </div>

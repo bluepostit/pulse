@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header text-center">
-    <h1 class="mb-0 pb-0"><%= @user.name %></h1>
+    <h2 class="mb-2 pb-0"><i class="small fas fa-user-circle text-muted"></i> <%= @user.name %></h2>
     <% if user_signed_in? && @user == current_user %>
       <p>
         <span class="text-muted">This is your page</span>.
