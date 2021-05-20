@@ -1,4 +1,6 @@
-<%= form_with url: search_user_path, class: 'form-inline nav-find-user' do |f| %>
+<%= form_with url: search_user_path,
+              class: 'form-inline nav-find-user',
+              html: { autocomplete: 'off' } do |f| %>
   <%= f.text_field :id, class: 'form-control flex-grow-1 ', type: 'search', placeholder: 'Find User', :'aria-label' => 'Find User' %>
   <button class="btn btn-success my-2 my-sm-0 flex-shrink-0" type="submit">
     <span><i class="small fas fa-search"></i> Find</span>

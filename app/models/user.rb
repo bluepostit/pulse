@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :rememberable, :validatable
 
   validates :name, presence: true, length: { minimum: 1 }
-  has_many :checkins
+  has_many :checkins, dependent: :destroy
 
   def latest_checkins(count = 5)
     checkins.order(created_at: :desc).limit(count)

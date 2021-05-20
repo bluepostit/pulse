@@ -11,7 +11,7 @@ class CheckinsController < ApplicationController
     @checkin.pulse_status = pulse_status
 
     if @checkin.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user.name)
     else
       render :new
     end

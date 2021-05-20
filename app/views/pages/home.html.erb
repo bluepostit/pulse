@@ -1,27 +1,66 @@
-<div class="header text-center">
-  <h1 class="mb-0 pb-0">Pulse</h1>
+<div class="header">
+  <h1 class="mb-0 pb-0 text-center">Pulse</h1>
   <div class="intro mt-3">
-    <p>
+    <p class="text-center">
       <strong>Pulse</strong> is a simple tool to help update people who are affected by disruptive events such as natural disasters, terror attacks, and wars.
     </p>
-    <p>After signing up, you can easily <strong>check in</strong> whenever you need to let people know how you are.</p>
-    <p>Your profile page is public, and anyone can see your updates.</p>
-    <p>If you have someone's user-name, you can <strong>search</strong> for it and we'll take you to their profile page.</p>
-    <p><strong>Important:</strong> Pulse makes no guarantees for information accuracy, and provides this service as a helpful tool whose reliability cannot be assured. You use this service entirely under your own responsibility.</p>
-    <p>Pulse <strong>will not act</strong> upon users' information, and is <strong>not a replacement for local emergency services.</strong></p>
+
+    <div class="my-5">
+      <div class="mb-2">
+        <% if user_signed_in? %>
+          <%= link_to new_checkin_path, class: 'btn btn-primary w-100' do %>
+            <i class="fas fa-heartbeat small"></i> Check in
+          <% end %>
+        <% else %>
+          <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary w-100' %>
+        <% end %>
+      </div>
+      <div>
+        <%= render 'shared/find_user_form' %>
+      </div>
+    </div>
+
+    <h4>How it Works</h4>
+    <div class="row">
+      <div class="col-1 text-right">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="col-11">
+        <p>You can see anyone's profile page without creating an account or signing in.</p>
+      </div>
+      <div class="col-1 text-right">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <div class="col-11">
+        <p>If you create an account, you can quickly <strong>check in</strong> whenever you need, to let people know how you are.</p>
+      </div>
+      <div class="col-1 text-right">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="col-11">
+        <p>Type someone's <strong>user name</strong> in the <strong>find bar</strong> to see their profile page.</p>
+      </div>
+      <div class="col-1 text-right">
+        <i class="fas fa-quote-left"></i>
+      </div>
+      <div class="col-11">
+        <p>Here is an <strong><%= link_to 'example', user_path('demo') %></strong> of a user's profile page.</p>
+      </div>
+    </div>
+
+
+
+    <div class="my-5">
+      <h4>Important</h4>
+      <small>
+        <ul>
+          <li>Pulse provides this service as a helpful tool, and makes no guarantees for information accuracy or reliability. You use this service entirely under your own responsibility.</li>
+          <li>Pulse <strong>will not act</strong> upon users' information, and is <strong>not a replacement for local emergency services.</strong></li>
+        </ul>
+      </small>
+    </div>
   </div>
 </div>
 <div class="page-content text-center flex-grow-1 d-flex flex-column justify-content-center">
-  <div class="mb-2">
-    <% if user_signed_in? %>
-      <%= link_to new_checkin_path, class: 'btn btn-primary w-100' do %>
-        <i class="fas fa-heartbeat small"></i> Check in
-      <% end %>
-    <% else %>
-      <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary w-100' %>
-    <% end %>
-  </div>
-  <div>
-    <%= render 'shared/find_user_form' %>
-  </div>
+
 </div>
