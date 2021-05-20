@@ -6,7 +6,9 @@ class User < ApplicationRecord
          #  :recoverable,
          :rememberable, :validatable
 
-  validates :name, presence: true, length: { minimum: 1 }
+  validates :name, presence: true,
+                   length: { minimum: 1 },
+                   uniqueness: true
   has_many :checkins, dependent: :destroy
 
   def latest_checkins(count = 5)
